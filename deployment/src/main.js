@@ -1,37 +1,45 @@
-const signupButton = document.getElementById("signupButton");
+window.addEventListener("DOMContentLoaded", () => {
 
-signupButton.addEventListener("click", async () => {
-    // Capture input values
-    const userName = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
+    const signupButton = document.getElementById("signupButton");
 
-    // Create payload
-    const data = {
-        userName,
-        password,
-        firstName,
-        lastName
-    };
+    signupButton.addEventListener("click", async () => {
 
-    try {
-        // Send request to backend
-        const response = await fetch("http://localhost:3000/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+        // Capture input values
+        const userName = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
 
-        const result = await response.json();
+        // Create payload
+        const data = {
+            userName,
+            password,
+            firstName,
+            lastName
+        };
 
-        console.log(result);
-        alert("Signup successful!");
+        try {
 
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong");
-    }
+            const response = await fetch("http://15.207.84.228:3000/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            console.log(result);
+
+            alert("Signup successful!");
+
+        } catch (error) {
+
+            console.error("Error:", error);
+
+            alert("Something went wrong");
+        }
+    });
+
 });

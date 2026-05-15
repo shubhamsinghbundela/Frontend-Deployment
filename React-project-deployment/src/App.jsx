@@ -17,31 +17,31 @@ function App() {
     })
   }
 
-  // const handleSignup = async () => {
+  const handleSignup = async () => {
 
-  //   try {
+    try {
 
-  //     const response = await fetch("http://localhost:3000/signup", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(formData)
-  //     })
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
 
-  //     const result = await response.json()
+      const result = await response.json()
 
-  //     console.log(result)
+      console.log(result)
 
-  //     alert("Signup successful!")
+      alert("Signup successful!")
 
-  //   } catch (error) {
+    } catch (error) {
 
-  //     console.error("Error:", error)
+      console.error("Error:", error)
 
-  //     alert("Something went wrong")
-  //   }
-  // }
+      alert("Something went wrong")
+    }
+  }
 
   return (
     <>
@@ -89,9 +89,9 @@ function App() {
 
         <br /><br />
 
-        {/* <button onClick={handleSignup}>
+        <button onClick={handleSignup}>
           Signup
-        </button> */}
+        </button> 
 
       </section>
 
